@@ -132,11 +132,11 @@ public class ClauseTest extends SimpleNLG4Test {
 	 */
 	@Test
 	public void testDidNot() {
-		PhraseElement s = phraseFactory.createClause("John", "eat");
+		PhraseElement s = phraseFactory.createClause("John", "eat","I");
 		s.setFeature(Feature.TENSE, Tense.PAST);
 		s.setFeature(Feature.NEGATED, true);
 
-		Assert.assertEquals("John did not eat", //$NON-NLS-1$
+		Assert.assertEquals("John did not eat me", //$NON-NLS-1$
 		                    this.realiser.realise(s).getRealisation());
 
 	}

@@ -91,7 +91,8 @@ public class XMLLexiconTest {
 		sentence.setFeature(Feature.TENSE, Tense.PAST);
 		PPPhraseSpec pp = factory.createPrepositionPhrase("in", wall);
 		sentence.addPostModifier(pp);
-		realiser.realiseSentence(sentence);
+		System.err.println(realiser.realiseSentence(sentence));
+
 
 		// Create a new 'the wall' NP and check to make sure that the syntax processor has
 		// not propagated plurality to the canonical XMLLexicon WordElement object.

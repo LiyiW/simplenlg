@@ -30,6 +30,8 @@ import simplenlg.phrasespec.PPPhraseSpec;
 import simplenlg.phrasespec.SPhraseSpec;
 import simplenlg.realiser.english.Realiser;
 
+import java.util.Arrays;
+
 /**
  * @author Dave Westwater, Data2Text Ltd
  */
@@ -74,8 +76,8 @@ public class StandAloneExample {
 
 		// below creates a sentence DocumentElement by concatenating strings
 		StringElement hePlayed = new StringElement("he played");
-		StringElement there = new StringElement("there");
 		WordElement football = new WordElement("football");
+		StringElement there = new StringElement("there");
 
 		DocumentElement sentence2 = nlgFactory.createSentence();
 		sentence2.addComponent(hePlayed);
@@ -101,15 +103,18 @@ public class StandAloneExample {
 		// below is clumsy as direct access to morphology isn't properly supported in V4.2
 		// hopefully will be better supported in later versions
 
-		// get word element for "child"
-		WordElement word = (WordElement) nlgFactory.createWord("child", LexicalCategory.NOUN);
-		// create InflectedWordElement from word element
-		InflectedWordElement inflectedWord = new InflectedWordElement(word);
-		// set the inflected word to plural
-		inflectedWord.setPlural(true);
-		// realise the inflected word
-		String result = realiser.realise(inflectedWord).getRealisation();
 
-		System.out.println(result);
+		for (String wordString: Arrays.asList("child", "person", "tag")) {
+			// get word element for "child"
+			WordElement word = (WordElement) nlgFactory.createWord(wordString, LexicalCategory.NOUN);
+			// create InflectedWordElement from word element
+			InflectedWordElement inflectedWord = new InflectedWordElement(word);
+			// set the inflected word to plural
+			inflectedWord.setPlural(true);
+			// realise the inflected word
+			String result = realiser.realise(inflectedWord).getRealisation();
+
+			System.out.println(result);
+		}
 	}
 }

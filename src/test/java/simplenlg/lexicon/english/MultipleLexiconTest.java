@@ -91,6 +91,9 @@ public class MultipleLexiconTest {
 
 		// restore flag to original state
 		lexicon.setAlwaysSearchAll(alwaysSearchAll);
+
+		WordElement LA = lexicon.getWord("LA");
+
 	}
 
 }
